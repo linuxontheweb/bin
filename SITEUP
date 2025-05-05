@@ -1,0 +1,18 @@
+if [ ! $1 ]; then
+	echo "No ~/ALOTW dir name given!"
+	exit;
+fi;
+DIRPATH=/usr/local/home/ALOTW/$1
+if [ ! -d $DIRPATH ]; then
+	echo "$DIRPATH: not a directory"
+	exit;
+fi;
+if [ ! -d $DIRPATH/.git ]; then
+	echo "$DIRPATH: not a git repo"
+	exit;
+fi;
+#echo DOEMB: $DIRPATH
+cd $DIRPATH
+git add .
+git commit -m "I'm crushing your head!"
+git push -u origin main
